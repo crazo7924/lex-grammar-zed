@@ -3,7 +3,6 @@ export default grammar({
 
   extras: ($) => [
     /\s+/, // Skip whitespace naturally
-    $.comment,
   ],
 
   rules: {
@@ -20,7 +19,12 @@ export default grammar({
 
     // --- Definitions Section ---
     definitions_section: ($) =>
-      repeat1(choice($.c_code_block, $.macro_definition)),
+      repeat1(choice(
+          $.c_code_block,
+          $.macro_definition,
+          $.comment
+      )
+    ),
 
     c_code_block: ($) =>
       seq(
@@ -38,7 +42,7 @@ export default grammar({
     macro_value: $ => /[^\n]+/ ,
 
     // --- Rules Section ---
-    rules_section: $ => repeat1($.rule),
+    rules_section: $ => repeat1(seq($.rule, $.comment)),
 
     rule: $ => seq(
       $.pattern,
@@ -46,6 +50,7 @@ export default grammar({
     ),
 
     pattern: $ => choice(
+      seq('"', repeat(/[^"\n]/), '"'),
       /[^\s{}]+/,
       seq('{', /[a-zA-Z_][a-zA-Z0-9_]*/, '}')
     ),

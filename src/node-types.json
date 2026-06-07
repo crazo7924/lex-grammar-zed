@@ -31,7 +31,6 @@
   {
     "type": "comment",
     "named": true,
-    "extra": true,
     "fields": {}
   },
   {
@@ -44,6 +43,10 @@
       "types": [
         {
           "type": "c_code_block",
+          "named": true
+        },
+        {
+          "type": "comment",
           "named": true
         },
         {
@@ -110,6 +113,10 @@
       "required": true,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "rule",
           "named": true
         }
@@ -143,6 +150,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "\"",
+    "named": false
   },
   {
     "type": "%{",
