@@ -38,23 +38,28 @@ export default grammar({
     macro_value: $ => /[^\n]+/ ,
 
     // --- Rules Section ---
-    rules_section: ($) => repeat1($.rule),
+    rules_section: $ => repeat1($.rule),
 
-    rule: ($) => seq($.pattern, $.action),
+    rule: $ => seq(
+      $.pattern,
+      $.action
+    ),
 
-    // A simple regex pattern or macro expansion like {DIGIT}
-    pattern: ($) =>
-      choice(
-        /[^\s{}]+/, // Simple regex chars
-        seq("{", /[a-zA-Z_][a-zA-Z0-9_]*/, "}"), // Macro usage
-      ),
+    pattern: $ => choice(
+      /[^\s{}]+/,
+      seq('{', /[a-zA-Z_][a-zA-Z0-9_]*/, '}')
+    ),
 
-    // Action is usually a C block { return TOKEN; } or a single statement
-    action: ($) =>
-      choice(
-        seq("{", repeat(choice(/[^}]/, /\{[^}]*\}/)), "}"), // Handles simple nested braces
-        /[^\n]+/, // Or a single line statement
-      ),
+    // Differentiate between a braced block action and a naked inline action
+    action: $ => choice(
+      $.braced_action,
+      $.inline_action
+    ),
+
+    braced_action: $ => seq('{', repeat(choice(/[^}]/, /\{[^}]*\}/)), '}'),
+
+    // Grabs everything until the end of the line, excluding trailing spaces or comments
+    inline_action: $ => /[^\n;\/]+;?/,
 
     // --- User Code Section ---
     user_code_section: ($) => /(.|\n)*/,

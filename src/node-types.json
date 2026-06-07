@@ -2,6 +2,25 @@
   {
     "type": "action",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "braced_action",
+          "named": true
+        },
+        {
+          "type": "inline_action",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "braced_action",
+    "named": true,
     "fields": {}
   },
   {
@@ -55,11 +74,6 @@
   },
   {
     "type": "macro_name",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "macro_value",
     "named": true,
     "fields": {}
   },
@@ -152,6 +166,14 @@
   },
   {
     "type": "delimiter",
+    "named": true
+  },
+  {
+    "type": "inline_action",
+    "named": true
+  },
+  {
+    "type": "macro_value",
     "named": true
   },
   {

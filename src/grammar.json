@@ -184,39 +184,47 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "{"
-            },
-            {
-              "type": "REPEAT",
-              "content": {
-                "type": "CHOICE",
-                "members": [
-                  {
-                    "type": "PATTERN",
-                    "value": "[^}]"
-                  },
-                  {
-                    "type": "PATTERN",
-                    "value": "\\{[^}]*\\}"
-                  }
-                ]
-              }
-            },
-            {
-              "type": "STRING",
-              "value": "}"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "braced_action"
         },
         {
-          "type": "PATTERN",
-          "value": "[^\\n]+"
+          "type": "SYMBOL",
+          "name": "inline_action"
         }
       ]
+    },
+    "braced_action": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "[^}]"
+              },
+              {
+                "type": "PATTERN",
+                "value": "\\{[^}]*\\}"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "inline_action": {
+      "type": "PATTERN",
+      "value": "[^\\n;\\/]+;?"
     },
     "user_code_section": {
       "type": "PATTERN",
