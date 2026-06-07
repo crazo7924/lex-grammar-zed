@@ -1,0 +1,42 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "lex",
+      "camelcase": "Lex",
+      "title": "Lex",
+      "scope": "source.lex",
+      "file-types": [
+        "lex"
+      ],
+      "injection-regex": "^lex$",
+      "class-name": "TreeSitterLex"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Lex grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Bharat Dev Burman",
+        "email": "bharat.singh7924@gmail.com",
+        "url": ""
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/tree-sitter/tree-sitter-lex",
+      "funding": ""
+    }
+  },
+  "bindings": {
+    "c": false,
+    "go": false,
+    "java": false,
+    "node": false,
+    "python": false,
+    "rust": false,
+    "swift": false,
+    "zig": false
+  }
+}
