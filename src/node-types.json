@@ -37,6 +37,30 @@
   {
     "type": "macro_definition",
     "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "macro_name",
+          "named": true
+        },
+        {
+          "type": "macro_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "macro_name",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "macro_value",
+    "named": true,
     "fields": {}
   },
   {
