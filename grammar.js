@@ -29,11 +29,13 @@ export default grammar({
         "%}",
       ),
 
-    macro_definition: ($) =>
-      seq(
-        field("identifier", /[a-zA-Z_][a-zA-Z0-9_]*/),
-        field("value", /[^\n]+/),
-      ),
+    macro_definition: $ => seq(
+        $.macro_name,
+        $.macro_value
+    ),
+
+    macro_name: $ => /[a-zA-Z_][a-zA-Z0-9_]*/,
+    macro_value: $ => /[^\n]+/ ,
 
     // --- Rules Section ---
     rules_section: ($) => repeat1($.rule),
