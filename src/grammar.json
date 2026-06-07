@@ -79,11 +79,15 @@
           },
           {
             "type": "SYMBOL",
+            "name": "option_definition"
+          },
+          {
+            "type": "SYMBOL",
             "name": "macro_definition"
           },
           {
             "type": "SYMBOL",
-            "name": "comment"
+            "name": "newline"
           }
         ]
       }
@@ -98,22 +102,26 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "CHOICE",
-            "members": [
-              {
-                "type": "PATTERN",
-                "value": "[^%]"
-              },
-              {
-                "type": "PATTERN",
-                "value": "%[^}]"
-              }
-            ]
+            "type": "PATTERN",
+            "value": "[^\\n]*\\n"
           }
         },
         {
           "type": "STRING",
           "value": "%}"
+        }
+      ]
+    },
+    "option_definition": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "%option"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]+"
         }
       ]
     },
@@ -141,7 +149,7 @@
     "rules_section": {
       "type": "REPEAT1",
       "content": {
-        "type": "SEQ",
+        "type": "CHOICE",
         "members": [
           {
             "type": "SYMBOL",
@@ -149,7 +157,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "comment"
+            "name": "newline"
           }
         ]
       }
@@ -164,6 +172,10 @@
         {
           "type": "SYMBOL",
           "name": "action"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "newline"
         }
       ]
     },
@@ -192,7 +204,7 @@
         },
         {
           "type": "PATTERN",
-          "value": "[^\\s{}]+"
+          "value": "[^\\s{}%%/\\\"]+"
         },
         {
           "type": "SEQ",
@@ -257,52 +269,21 @@
     },
     "inline_action": {
       "type": "PATTERN",
-      "value": "[^\\n\\/]+"
+      "value": "[^\\n]+"
     },
     "user_code_section": {
       "type": "PATTERN",
       "value": "(.|\\n)*"
     },
-    "comment": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "/*"
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^*]*\\*+([^/*][^*]*\\*+)*"
-            },
-            {
-              "type": "STRING",
-              "value": "/"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "//"
-            },
-            {
-              "type": "PATTERN",
-              "value": "[^\\n]*"
-            }
-          ]
-        }
-      ]
+    "newline": {
+      "type": "STRING",
+      "value": "\n"
     }
   },
   "extras": [
     {
       "type": "PATTERN",
-      "value": "\\s+"
+      "value": "[ \\t\\r]+"
     }
   ],
   "conflicts": [],

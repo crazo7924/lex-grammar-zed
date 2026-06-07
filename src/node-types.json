@@ -29,11 +29,6 @@
     "fields": {}
   },
   {
-    "type": "comment",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "definitions_section",
     "named": true,
     "fields": {},
@@ -46,15 +41,24 @@
           "named": true
         },
         {
-          "type": "comment",
+          "type": "macro_definition",
           "named": true
         },
         {
-          "type": "macro_definition",
+          "type": "newline",
+          "named": true
+        },
+        {
+          "type": "option_definition",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "inline_action",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "macro_definition",
@@ -81,6 +85,16 @@
     "fields": {}
   },
   {
+    "type": "macro_value",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "option_definition",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "pattern",
     "named": true,
     "fields": {}
@@ -95,6 +109,10 @@
       "types": [
         {
           "type": "action",
+          "named": true
+        },
+        {
+          "type": "newline",
           "named": true
         },
         {
@@ -113,7 +131,7 @@
       "required": true,
       "types": [
         {
-          "type": "comment",
+          "type": "newline",
           "named": true
         },
         {
@@ -164,27 +182,11 @@
     "named": false
   },
   {
-    "type": "/",
-    "named": false
-  },
-  {
-    "type": "/*",
-    "named": false
-  },
-  {
-    "type": "//",
-    "named": false
-  },
-  {
     "type": "delimiter",
     "named": true
   },
   {
-    "type": "inline_action",
-    "named": true
-  },
-  {
-    "type": "macro_value",
+    "type": "newline",
     "named": true
   },
   {
