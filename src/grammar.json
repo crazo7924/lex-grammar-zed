@@ -257,7 +257,7 @@
     },
     "inline_action": {
       "type": "PATTERN",
-      "value": "[^\\n;\\/]+;?"
+      "value": "[^\\n\\/]+"
     },
     "user_code_section": {
       "type": "PATTERN",

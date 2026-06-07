@@ -63,8 +63,7 @@ export default grammar({
 
     braced_action: $ => seq('{', repeat(choice(/[^}]/, /\{[^}]*\}/)), '}'),
 
-    // Grabs everything until the end of the line, excluding trailing spaces or comments
-    inline_action: $ => /[^\n;\/]+;?/,
+    inline_action: $ => /[^\n\/]+/, // Stops parsing if it hits a slash (comment boundary)
 
     // --- User Code Section ---
     user_code_section: ($) => /(.|\n)*/,
